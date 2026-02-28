@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+void insertMovieData(Movie i);
+
 class Movie {
     private:
         string writer;
@@ -29,3 +31,6 @@ class Movie {
 int main() {
     return 0;
 }
+
+
+
