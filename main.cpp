@@ -5,9 +5,9 @@
 #include <vector>
 using namespace std;
 
-void insertMovieData(Movie i);
+void insertMovieData(string filePath);
 
-const string MOVIE_FILE = "movies.txt";
+const string MOVIE_FILE = "C:\\Users\\lordj\\COMSC-210\\projects\\210-lab-15\\movies.txt";
 
 class Movie {
     private:
@@ -35,10 +35,12 @@ class Movie {
 int main() {
     vector<Movie> movies;
 
+    insertMovieData(MOVIE_FILE);
+
     return 0;
 }
 
-void insertMovieData(Movie i, string fileName){
+void insertMovieData(string filePath){
     string writer;
     int yearReleased;
     string title;
@@ -46,9 +48,13 @@ void insertMovieData(Movie i, string fileName){
     ifstream inputFile;
     string text;
 
-    inputFile.open(fileName);
+    inputFile.open(filePath);
     if (inputFile.is_open()) {
+        int i = 0;
         while (getline(inputFile, text)) {
+            if (i % 3 == 0){
+                
+            }
             cout << text << endl;
         }
         inputFile.close();
