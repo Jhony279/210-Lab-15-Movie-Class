@@ -61,23 +61,19 @@ void insertMovieData(string filePath, vector<Movie>& moviesV) {
     if (inputFile.is_open()) {
         int i = 0;
         while (getline(inputFile, text)) {
-            if (i % 3 == 0){
-                Movie* newMOV = new Movie;
-                newMOV->setTitle(text);
+            if (i % 3 == 0) {
+                title = text;
+            } else if (i % 3 == 1) {
+                yearReleased = stoi(text);
+            } else if (i % 3 == 2) {
+                writer = text;
+                Movie m;
+                m.setTitle(title);
+                m.setYearReleased(yearReleased);
+                m.setWriter(writer);
+                moviesV.push_back(m);
             }
-            if (i % 3 == 1){
-                Movie* newMOV = new Movie;
-                // stoi() converts a string to an integer
-                newMOV->setYearReleased(stoi(text));
-            }
-            if (i % 3 == 2){
-                Movie* newMOV = new Movie;
-                newMOV->setWriter(text);
-                // push_back() adds a new element to the end of the vector
-                moviesV.push_back(*newMOV);
-            }
-
-            cout << text << endl;
+            i++;
         }
         inputFile.close();
     } else {
