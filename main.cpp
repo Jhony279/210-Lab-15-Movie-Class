@@ -13,6 +13,7 @@ class Movie {
     int yearReleased;
     string title;
     public:
+    // Setter and getter functions for the Movie class attributes
     void setWriter(string w) {
         this->writer = w;
     }
@@ -23,6 +24,7 @@ class Movie {
         this->title = t;
     }
     
+    // Function to print the movie data to the console in a formatted manner
     void printData() {
         cout << "Movie: " << title << endl;
         cout << "   Year Released: " << yearReleased << endl;
@@ -33,15 +35,17 @@ class Movie {
 void insertMovieData(string, vector<Movie>&);
 
 /**
- * @brief 
- * @return 
+ * @brief Main function. reads movie data from a file, stores it in a vector of Movie
+ *        objects, and prints the data to the console
 */
 int main() {
+    // Create a vector to hold Movie objects
     vector<Movie> movies;
 
+    // Function to read from file and store into vector 
     insertMovieData(MOVIE_FILE, movies);
 
-    cout << "Movie Data: " << endl;
+    // Print the movie data to the console
     for (Movie m : movies) {
         m.printData();
     }
@@ -55,10 +59,12 @@ int main() {
  * @param moviesV A reference to a vector of Movie objects to be populated with the data
 */
 void insertMovieData(string filePath, vector<Movie>& moviesV) {
+    // Variables to hold the data read from the file for each movie
     string writer;
     int yearReleased;
     string title;
 
+    // Create an input file stream object to read from the specified file
     ifstream inputFile;
     string text;
 
@@ -77,12 +83,15 @@ void insertMovieData(string filePath, vector<Movie>& moviesV) {
                 m.setTitle(title);
                 m.setYearReleased(yearReleased);
                 m.setWriter(writer);
+                // Add the newly created Movie object to the vector of movies
                 moviesV.push_back(m);
             }
             // Increment the line counter to keep track of which line we are on
             i++;
         }
         inputFile.close();
+
+    // If the file could not be opened, print an error message to the console
     } else {
         cout << "Unable to open file." << endl;
     }
