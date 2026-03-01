@@ -7,7 +7,7 @@ using namespace std;
 
 void insertMovieData(string filePath);
 
-const string MOVIE_FILE = "C:\\Users\\lordj\\COMSC-210\\projects\\210-lab-15\\movies.txt";
+const string MOVIE_FILE = "movies.txt";
 
 class Movie {
     private:
